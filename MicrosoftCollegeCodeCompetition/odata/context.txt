@@ -1,0 +1,30 @@
+The Open Data Protocol (OData) is a data access protocol created by Microsoft that builds on simple REST principles. Your task is to retrieve certain data from a sample (live) OData service.
+
+For this problem you will be working with the OData service located here (http://services.odata.org/Northwind/Northwind.svc/). You will retrieve data from an entity set called ‘Products’. An entity set is equivalent to a table in a relational database. The Products entity set is located here (http://services.odata.org/Northwind/Northwind.svc/Products).
+
+Your input file will consist of a series of simple queries to perform on the Products entity set. The input will contain a $filter expression to perform on Products. This is equivalent to a WHERE clause in SQL. Your job is simply to see how many entities (rows in a table) are returned from the specified query.
+
+Normally a request to the endpoint specified above would return product data - but since you are only interested in the number of entities that would be returned, you can send requests to this special $count endpoint
+(http://services.odata.org/Northwind/Northwind.svc/Products/$count). After sending an appropriate request to this endpoint, it will respond with the number of entities that match the query. Print out this value on a line in the output file. Your output file will have one line per line of input containing one number.
+Input description/format
+
+The input will be a series of $filter queries to perform. Each line of input will correspond to a single query.
+
+For instance, the input line:
+Discontinued eq true
+
+should send a GET request to the following URL: http://services.odata.org/Northwind/Northwind.svc/Products/$count?$filter=Discontinued eq true
+Output description/format
+
+Your output will be a single number per line of input, indicating how many entities match the given query.
+Example input
+
+Discontinued eq true
+SupplierID eq 4
+CategoryID eq 2
+
+Example output
+
+8
+3
+12
